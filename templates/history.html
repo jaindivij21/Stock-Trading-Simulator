@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares Bought</th>
+                <th>Price</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for buy in buys %}
+                <tr>
+                    <td>{{ buy["symbol"] }}</td>
+                    <td>{{ buy["shares"] }}</td>
+                    <td>{{ buy["share_price"] }}</td>
+                    <td>{{ buy["timestamp"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares Sold</th>
+                <th>Price</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sell in sells %}
+                <tr>
+                    <td>{{ sell["symbol"] }}</td>
+                    <td>{{ -sell["shares"] }}</td>
+                    <td>{{ sell["share_price"] }}</td>
+                    <td>{{ sell["timestamp"] }}</td>
+                </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+{% endblock %}
